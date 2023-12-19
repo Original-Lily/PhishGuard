@@ -12,6 +12,10 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 
 def clean_text(text):
+    # Check if the value is NaN
+    if pd.isnull(text):
+        return ''
+    
     # Remove non-alphanumeric characters
     text = re.sub(r'[^a-zA-Z\s]', '', text)
     # Convert to lowercase
@@ -36,10 +40,12 @@ def lemmatize_tokens(tokens):
 input_file_path = 'Archive/Phishing_Email.csv'
 output_file_path = 'preprocessed_data.csv'
 
-df = pd.read_excel(input_file_path)
+# Assuming 'Email Text' is the correct column name for email content
+# and 'Email Type' is the correct column name for the label
+df = pd.read_csv(input_file_path)
 
 # Apply preprocessing to each email content
-df['Processed_Content'] = df['Email_Content'].apply(lambda x: clean_text(x))
+df['Processed_Content'] = df['Email Text'].apply(lambda x: clean_text(x))
 df['Processed_Content'] = df['Processed_Content'].apply(lambda x: tokenize_text(x))
 df['Processed_Content'] = df['Processed_Content'].apply(lambda x: remove_stopwords(x))
 df['Processed_Content'] = df['Processed_Content'].apply(lambda x: lemmatize_tokens(x))
