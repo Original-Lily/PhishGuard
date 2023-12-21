@@ -31,6 +31,9 @@ Phish Guard uses the following stages in order to predict the safety of an email
              macro avg       0.96      0.97      0.97      3730
           weighted avg       0.97      0.97      0.97      3730```
 
+    ```bash
+    git clone git://github.com/Original-Lily/PhishGuard.git
+    ```
 ## Setup and Running Yourself
 
 1. Clone the repository:
