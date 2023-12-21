@@ -1,63 +1,29 @@
-# CloakRoom
+# PhishGuard
 
-Welcome to **CloakRoom** – your ultimate solution for secure application messaging. CloakRoom allows you to establish a robust connection that ensures the confidentiality, authentication, and integrity of your messages between clients and servers, all implemented using the Python programming language.
+## Key Features pre-Learning
 
-## Key Features
+Phish Guard uses the following stages in order to predict the safety of an email:
 
-CloakRoom provides the following key features to guarantee a secure communication channel:
+- **DataCollection:** Emails to train and test from are sourced for free from [kaggle](https://www.kaggle.com/datasets/subhajournal/phishingemails)!
 
-- **Message Confidentiality:** All messages from the client to the server are confidential, assuming trust in the security of public keys.
+- **Data Interpretation & Pre-processing:** involving tasks such as removing irrelevant characters, handling misspellings, and tokenizing the text into words.
 
-- **Sender Authentication:** Utilize a verification diagram to allow the server to verify that it is receiving the message from the client and not anyone else.
+- **Feature extraction:** Converting the text data into numerical features that can be used as input for machine learning models. TF-IDF (Term Frequency-Inverse Document Frequency) was employed for this stage.
 
-- **Message Integrity:** The server should verify that the received message has remained intact all the way it traveled from the client.
+## Implementation & Training
 
-- **Symmetric Key Distribution:** Efficient symmetric key distribution for encrypting and decrypting messages securely.
+- **Logistic Regression** was employed via the sciKit-learn module in order to intake this data and make predictions
 
-## Implementation
+- The dataset imported is split into an 80% training portion and a 20% testing portion
 
-### Part 1
-
-In this phase, CloakRoom encrypts messages using an asymmetric key for enhanced security. Key aspects of Part 1 include:
-
-- Encrypting messages with the server's public key to ensure confidentiality.
-
-- Utilizing a verification diagram for server authentication.
-
-- Verifying the integrity of the received message.
-
-- Demonstrating message confidentiality, even in case of interception during transit.
-
-### Part 2
-
-Building upon Part 1, CloakRoom optimizes the process for larger messages. Key features in Part 2 include:
-
-- Generating a secret key on the client side for symmetric encryption.
-
-- Employing a symmetric algorithm to encrypt both the message and its signature.
-
-- Encrypting the secret key with the server's public key.
-
-- Sending the combined output to the server.
-
-## Running the code
-
-To run the specific version of the encrypted messaging, you'll need to run the files from their respective sub-directories.
-
-i.e.: `./ASYMMETRIC_ONLY` or `./ASYMMETRIC_SYMMETRIC`
-
-First, start the server: `python -u server.py`
-
-To receive a message from the server, the command is as follows:
-
-`python -u client.py recv_msg`
-
-To send a message to the server, the command is as follows:
-
-`python -u client.py send_msg "message_to_send"`
-
-You are also able to generate new RSA key pair on either the client or server by issuing the `generate_key_pair` command.
-
-`python -u client.py generate_key_pair`
-
-`python -u server.py generate_key_pair`
+- '''bash
+  Accuracy: 0.967024128686327
+  Classification Report:
+                  precision    recall  f1-score   support
+  
+  Phishing Email       0.95      0.96      0.96      1457
+      Safe Email       0.98      0.97      0.97      2273
+  
+        accuracy                           0.97      3730
+       macro avg       0.96      0.97      0.97      3730
+    weighted avg       0.97      0.97      0.97      3730```
