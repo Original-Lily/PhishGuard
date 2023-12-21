@@ -19,7 +19,6 @@ Phish Guard uses the following stages in order to predict the safety of an email
 - Precision for 'Phishing Email': 95% (of the instances predicted as phishing, 95% are correct).
 - Precision for 'Safe Email': 98% (of the instances predicted as safe, 98% are correct).
 
-      '''bash
         Accuracy: 0.967024128686327
         Classification Report:
                         precision    recall  f1-score   support
@@ -29,11 +28,9 @@ Phish Guard uses the following stages in order to predict the safety of an email
         
               accuracy                           0.97      3730
              macro avg       0.96      0.97      0.97      3730
-          weighted avg       0.97      0.97      0.97      3730```
+          weighted avg       0.97      0.97      0.97      3730
 
-    ```bash
-    git clone git://github.com/Original-Lily/PhishGuard.git
-    ```
+
 ## Setup and Running Yourself
 
 1. Clone the repository:
