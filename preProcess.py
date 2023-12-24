@@ -37,7 +37,7 @@ def lemmatize_tokens(tokens):
     return lemmatized_tokens
 
 # Read Excel file
-input_file_path = 'Archive/Phishing_Email.csv'
+input_file_path = 'Phishing_Email_with_Input.csv'
 output_file_path = 'preprocessed_data.csv'
 
 # Assuming 'Email Text' is the correct column name for email content

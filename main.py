@@ -24,7 +24,7 @@ def main():
     install_requirements()
 
     # Run Python scripts in order
-    scripts_to_run = ["preProcess.py", "TFIDF.py", "model.py"]
+    scripts_to_run = ["usrInput.py", "preProcess.py", "TFIDF.py", "model.py"]
     for script in scripts_to_run:
         run_python_script(script)
 
