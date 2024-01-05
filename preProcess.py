@@ -16,10 +16,9 @@ def clean_text(text):
     if pd.isnull(text):
         return ''
     
-    # Remove non-alphanumeric characters
+    #Remove non-alphanumeric characters
     text = re.sub(r'[^a-zA-Z\s]', '', text)
-    # Convert to lowercase
-    text = text.lower()
+    text = text.lower() #Convert to lowercase
     return text
 
 def tokenize_text(text):
@@ -36,21 +35,20 @@ def lemmatize_tokens(tokens):
     lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
     return lemmatized_tokens
 
-# Read Excel file
+#READ EXCEL FULE
 input_file_path = 'Phishing_Email_with_Input.csv'
 output_file_path = 'preprocessed_data.csv'
 
-# Assuming 'Email Text' is the correct column name for email content
-# and 'Email Type' is the correct column name for the label
+#assuming Email text is the correct column name for email content
+#and email type is the correct column name for the label
 df = pd.read_csv(input_file_path)
 
-# Apply preprocessing to each email content
+#APPLY PRE-PROCESSING
 df['Processed_Content'] = df['Email Text'].apply(lambda x: clean_text(x))
 df['Processed_Content'] = df['Processed_Content'].apply(lambda x: tokenize_text(x))
 df['Processed_Content'] = df['Processed_Content'].apply(lambda x: remove_stopwords(x))
 df['Processed_Content'] = df['Processed_Content'].apply(lambda x: lemmatize_tokens(x))
 
-# Save preprocessed data to a new CSV file
+#SAVE: new data to a new CSV file
 df.to_csv(output_file_path, index=False)
-
 print(f"Preprocessed data saved to: {output_file_path}")

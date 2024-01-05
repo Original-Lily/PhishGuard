@@ -29,21 +29,20 @@ def run_other_scripts(scripts_to_run):
             sys.exit(1)
 
 def main():
-    # Install requirements
+    # Install requirements.txt with concent
     install_requirements()
 
-    # Get user input from command line
+    #RECIEVE USER PARAMETERS AND CHECK FORMAT
     if len(sys.argv) != 2:
         print("Usage: main.py <UserInput>")
+        print("Example: main.py 'This is a test email'")
         sys.exit(1)
 
     usr_input = sys.argv[1]
     print(usr_input)
+    run_usr_input_script("usrInput.py", usr_input) #Run usrInput.py script with parameter input
 
-    # Run usrInput.py script
-    run_usr_input_script("usrInput.py", usr_input)
-
-    # Run other Python scripts in order
+    #Run other Python scripts in order
     other_scripts_to_run = ["preProcess.py", "TFIDF.py", "model.py"]
     run_other_scripts(other_scripts_to_run)
 

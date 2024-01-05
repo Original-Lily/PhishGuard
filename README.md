@@ -42,8 +42,9 @@ Phish Guard uses the following stages in order to predict the safety of an email
 2. Begin program in full via:
 
    ```bash
-    python main.py
+    python main.py "{string input}"
     ```
+    <i>ensure the string input is accompanied by quotations ""</i>
    
 3. (Optional) Ensure your modules are installed/ up-to-date:
 
